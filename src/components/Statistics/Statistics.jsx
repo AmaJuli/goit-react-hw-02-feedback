@@ -1,36 +1,30 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import css from './Statistics.module.css'
-import { Notification } from "components/Notification";
-import { Component } from "react";
+import css from './Statistics.module.css';
+import { Notification } from '../Notification';
 
-export class Statistics extends Component {
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
+  if (total === 0) {
+    return <Notification message="There is no feedback" />;
+  }
 
-renders=()=>{
-    if(this.props.total===0){
-        return <Notification message="There is no feedback"/>
-    }else{
-        return <>
-        <p className={css.titlegood}>Good:  {this.props.good}</p>
-         <p className={css.titleneutral}>Neutral:  {this.props.neutral}</p>
-         <p className={css.titlebag}>Bad:  {this.props.bad}</p>
-         <p className={css.titletotal}>Total:  {this.props.total}</p>
-         <p className={css.titlepositiv}>Positiv feedback:  {this.props.positivePercentage}%</p>
-         </>
-         
-    }
-}
-render(){
-    
-return(<>
-  {this.renders()}
-    
-  </>
-  )
-} 
-}
+  return (
+    <>
+      <p className={css.titlegood}>Good: {good}</p>
+      <p className={css.titleneutral}>Neutral: {neutral}</p>
+      <p className={css.titlebad}>Bad: {bad}</p>
+      <p className={css.titletotal}>Total: {total}</p>
+      <p className={css.titlepositiv}>Positive feedback: {positivePercentage}%</p>
+    </>
+  );
+};
 
-Statistics.ropTypes={
-    good:PropTypes.number.isRequired,
-    neutral:PropTypes.number.isRequired,
-    bad:PropTypes.number.isRequired
- }
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
+};
+
+export default Statistics;

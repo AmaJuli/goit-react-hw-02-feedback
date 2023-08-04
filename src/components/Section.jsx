@@ -1,15 +1,19 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import {Feedback} from './Feedback';
 import css from './Section.module.css';
-export const Section = ({title}) => {
+
+const Section = ({ title, children }) => {
   return (
     <div>
       <h1 className={css.title}>{title}</h1>
-      <Feedback />
+      {children}
     </div>
   );
 };
 
-Section.ropTypes = {
+Section.propTypes = {
   title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
+
+export default Section;

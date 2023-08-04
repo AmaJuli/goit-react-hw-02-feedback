@@ -9,7 +9,13 @@
 }
 
 .containerButton {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    /* Center the items horizontally */
+    align-items: center;
+    /* Center the items vertically */
+    margin-top: 20px;
+    /* Add some margin for better spacing */
 }
 
 .button1:active,
